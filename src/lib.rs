@@ -60,7 +60,7 @@ pub mod date {
 
         let time = SystemTime::now()
             .duration_since(SystemTime::UNIX_EPOCH)
-            .unwrap_or_else(|e| panic!(e));
+            .unwrap();
         time.as_secs_f64()
     }
 
@@ -364,7 +364,7 @@ where
 {
     let mut desc: sapp::sapp_desc = unsafe { std::mem::zeroed() };
 
-    let title = CString::new(conf.window_title.as_bytes()).unwrap_or_else(|e| panic!(e));
+    let title = CString::new(conf.window_title.as_bytes()).unwrap();
 
     let mut user_data = Box::new(UserDataState::Uninitialized(Box::new(f)));
 
